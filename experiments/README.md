@@ -1,40 +1,31 @@
 # Experiments
 
-This folder contains the key experiments for the paper "Emergent Specialization in Multi-Agent Systems."
+This folder contains experiment scripts for Paper 3: Emergent Civilizations.
 
-## Quick Start: Reproduce All Results
+## Experiment Suite
+
+| Script | Description |
+|--------|-------------|
+| `exp_dynasty.py` | Dynasty formation (50 agents, 200 gen) |
+| `exp_inequality.py` | Wealth inequality emergence |
+| `exp_governance.py` | Governance emergence (100 agents, 300 gen) |
+| `exp_voting.py` | Voting system comparison |
+| `exp_parallel.py` | 10 parallel civilizations |
+| `exp_scale.py` | Scale to 1000 agents |
+
+## Running Experiments
 
 ```bash
-# From repository root
-python experiments/exp_unified_pipeline.py
+# Run dynasty experiment
+python experiments/exp_dynasty.py --output results/dynasties/
+
+# Run governance experiment
+python experiments/exp_governance.py --output results/governance/
+
+# Run parallel civilizations
+python experiments/exp_parallel.py --output results/parallel/
 ```
-
-This runs all core experiments across all 6 domains with identical configuration.
-
-## Experiment Files
-
-| File | Purpose | Key Finding |
-|------|---------|-------------|
-| `exp_unified_pipeline.py` | **Main reproducibility script** | Runs all experiments on all 6 domains |
-| `exp_method_specialization.py` | Method specialization analysis | Agents specialize in prediction methods (+26.5% improvement) |
-| `exp_hypothesis_tests.py` | Formal hypothesis testing (H1-H4) | All 4 hypotheses pass (p < 0.001) |
-| `exp_marl_comparison.py` | MARL baseline comparison | NichePopulation achieves 4.3× higher SI than MARL |
-| `exp_lambda_ablation.py` | λ ablation study | Competition alone (λ=0) induces SI > 0.25 |
-| `exp_lambda_zero_real.py` | λ=0 on real domains | Validates core thesis on real data |
-| `exp_mechanism_ablation.py` | Isolate competition vs bonus effects | Competition is primary driver |
-| `exp_regime_shuffle.py` | Negative control test | Specialization robust to regime relabeling |
 
 ## Configuration
 
-All experiments use identical settings (see `config.py`):
-
-| Parameter | Value |
-|-----------|-------|
-| Trials | 30 |
-| Iterations | 500 |
-| Agents | 8 |
-| Default λ | 0.3 |
-
-## Results
-
-Results are saved to `../results/` with JSON files and figures.
+See `.cursor/plans/paper3_civilizations.plan.md` for detailed experiment configurations.
