@@ -51,10 +51,10 @@ class CivilizationAgent:
     system_prompt: str      # Evolvable role
     wealth: float = 100.0   # Economic resource
     parent_id: str = None   # Lineage tracking
-    
+
     def can_reproduce(self) -> bool:
         return self.wealth >= REPRODUCTION_COST  # e.g., 200
-    
+
     def is_alive(self) -> bool:
         return self.wealth > 0  # Death when bankrupt
 ```
@@ -88,7 +88,7 @@ async def propose_rule(agent, society_state):
     proposal = await llm.generate(f"""
     You are {agent.id} with wealth {agent.wealth}.
     Society Gini: {society_state.gini}
-    
+
     Propose ONE rule that would benefit you or society.
     """)
     return parse_rule(proposal)
